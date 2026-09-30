@@ -2,5 +2,7 @@
   "name": "HOT N CHILLI - Online Ordering & Restaurant",
   "description": "Official online food ordering portal for HOT N CHILLI Restaurant. Browse full menu, customize deals, and send instant WhatsApp order slips.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
