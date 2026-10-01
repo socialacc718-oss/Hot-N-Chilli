@@ -13,6 +13,7 @@ import { LoyaltyModal } from './components/LoyaltyModal';
 import { FloatingCartBar } from './components/FloatingCartBar';
 import { FloatingContactButtons } from './components/FloatingContactButtons';
 import { Footer } from './components/Footer';
+import { HotNChilliLogo } from './components/HotNChilliLogo';
 import { Search, Flame, Sparkles, Filter, CheckCircle2, ChevronRight, Gift } from 'lucide-react';
 
 export default function App() {
@@ -290,6 +291,10 @@ export default function App() {
         {/* Filters and search info bar */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
           <div>
+            <div className="flex items-center gap-2 mb-1">
+              <HotNChilliLogo size={24} className="shrink-0" />
+              <span className="text-xs font-bold text-amber-500 uppercase tracking-wider">HOT N CHILLI Official Menu</span>
+            </div>
             <h2 className="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
               <Flame className="w-6 h-6 text-red-500 fill-orange-500" />
               <span>

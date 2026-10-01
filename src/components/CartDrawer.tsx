@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CartItem, CustomerDetails, OrderType, PlacedOrder } from '../types/order';
 import { RESTAURANT_INFO } from '../data/menuData';
+import { HotNChilliLogo } from './HotNChilliLogo';
 import { formatPrice, generateOrderId, getWhatsAppUrl } from '../utils/orderUtils';
 import { calculatePointsEarned } from '../types/loyalty';
 import { 
@@ -141,15 +142,13 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
         className="relative z-10 w-full max-w-full sm:max-w-md md:max-w-lg h-full bg-stone-900 border-l border-stone-800 shadow-2xl flex flex-col overflow-hidden text-stone-100"
         style={{ width: '100%' }}
       >
-        {/* Header */}
+        {/* Header with Official Logo */}
         <div className="p-4 sm:p-5 border-b border-stone-800 bg-stone-950 flex items-center justify-between gap-3 shrink-0">
-          <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-red-600/20 border border-red-500/40 flex items-center justify-center text-red-500">
-              <ShoppingBag className="w-5 h-5" />
-            </div>
+          <div className="flex items-center gap-3">
+            <HotNChilliLogo size={38} className="shrink-0 drop-shadow-md" />
             <div>
               <h2 className="text-base sm:text-lg font-black text-white leading-tight">
-                Your Order Cart
+                HOT N CHILLI Cart
               </h2>
               <p className="text-xs text-stone-400">
                 {items.length === 0 ? 'No items yet' : `${items.length} item(s) selected`}
@@ -525,6 +524,12 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               </span>
               <ArrowRight className="w-4 h-4" />
             </button>
+
+            {/* Official Logo Branding Note */}
+            <div className="flex items-center justify-center gap-1.5 text-[11px] text-stone-400 pt-1">
+              <HotNChilliLogo size={18} />
+              <span>HOT N CHILLI Kitchen Direct WhatsApp Dispatch</span>
+            </div>
           </div>
         )}
       </div>

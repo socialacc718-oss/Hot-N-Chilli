@@ -199,9 +199,10 @@ export const OrderSlipModal: React.FC<OrderSlipModalProps> = ({ order, isOpen, o
               <p className="text-[11px] font-bold text-stone-800 uppercase">
                 *** THANK YOU FOR ORDERING ***
               </p>
-              <p className="text-[10px] text-stone-500 font-sans">
-                HOT N CHILLI • Freshly Cooked • Authentic Flavours
-              </p>
+              <div className="flex items-center justify-center gap-1.5 text-[10px] text-stone-500 font-sans">
+                <HotNChilliLogo size={16} />
+                <span>HOT N CHILLI • Freshly Cooked • Authentic Flavours</span>
+              </div>
             </div>
           </div>
         </div>

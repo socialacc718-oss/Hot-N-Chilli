@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { MenuItem, MenuItemVariant } from '../data/menuData';
 import { formatPrice } from '../utils/orderUtils';
 import { getDishImage } from '../data/dishImages';
-import { Plus, Minus, Heart, Star, Sparkles, SlidersHorizontal } from 'lucide-react';
+import { Plus, Minus, Heart } from 'lucide-react';
 
 interface MenuItemCardProps {
   item: MenuItem;
@@ -20,6 +21,7 @@ export const MenuItemCard: React.FC<MenuItemCardProps> = ({
   onUpdateCartQuantity,
 }) => {
   const [isLiked, setIsLiked] = useState(false);
+  const [isAddedAnim, setIsAddedAnim] = useState(false);
   const hasVariants = Boolean(item.variants && item.variants.length > 0);
   const hasOptions = hasVariants || item.hasCheeseAddon;
 
@@ -32,6 +34,9 @@ export const MenuItemCard: React.FC<MenuItemCardProps> = ({
 
   const handleActionClick = (e: React.MouseEvent) => {
     e.stopPropagation();
+    setIsAddedAnim(true);
+    setTimeout(() => setIsAddedAnim(false), 450);
+
     if (hasOptions) {
       onOpenVariantModal(item);
     } else {
@@ -40,12 +45,22 @@ export const MenuItemCard: React.FC<MenuItemCardProps> = ({
   };
 
   return (
-    <div 
+    <motion.div 
       onClick={() => hasOptions && onOpenVariantModal(item)}
-      className="group relative flex flex-col justify-between bg-stone-900 border border-stone-800/90 hover:border-red-600/50 rounded-3xl p-3 sm:p-4 transition-all duration-300 hover:shadow-xl hover:shadow-red-950/20 cursor-pointer"
+      whileHover={{ 
+        scale: 1.025, 
+        y: -4,
+        transition: { duration: 0.22, ease: "easeOut" }
+      }}
+      animate={isAddedAnim ? { 
+        scale: [1, 1.055, 0.985, 1],
+        transition: { duration: 0.4, ease: "easeInOut" }
+      } : { scale: 1, y: 0 }}
+      whileTap={{ scale: 0.98 }}
+      className="group relative flex flex-col justify-between bg-stone-900 border border-stone-800/90 hover:border-red-600/50 rounded-3xl p-3 sm:p-4 transition-colors duration-300 hover:shadow-2xl hover:shadow-red-950/25 cursor-pointer will-change-transform"
     >
       <div>
-        {/* Image Area with Heart & Floating Red Plus button exactly as in Screenshot */}
+        {/* Image Area with Heart & Floating Red Plus button */}
         <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-stone-950/60 mb-3 border border-stone-800/80">
           <img
             src={imageUrl}
@@ -85,12 +100,15 @@ export const MenuItemCard: React.FC<MenuItemCardProps> = ({
             />
           </button>
 
-          {/* Floating Red Circular Plus Button (Bottom-Right of Image) */}
-          <button
+          {/* Floating Red Circular Plus Button with motion scale */}
+          <motion.button
             type="button"
             onClick={handleActionClick}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.88 }}
+            animate={isAddedAnim ? { scale: [1, 1.25, 0.95, 1], rotate: [0, 15, -10, 0] } : {}}
             aria-label={`Add ${item.name}`}
-            className="absolute bottom-2.5 right-2.5 w-10 h-10 rounded-full bg-red-600 hover:bg-red-500 text-white flex items-center justify-center shadow-xl shadow-black/60 active:scale-90 transition-all z-10 ring-2 ring-stone-900"
+            className="absolute bottom-2.5 right-2.5 w-10 h-10 rounded-full bg-red-600 hover:bg-red-500 text-white flex items-center justify-center shadow-xl shadow-black/60 transition-colors z-10 ring-2 ring-stone-900 cursor-pointer"
           >
             <Plus className="w-5 h-5 stroke-[2.5]" />
             {quantityInCart > 0 && (
@@ -98,7 +116,7 @@ export const MenuItemCard: React.FC<MenuItemCardProps> = ({
                 {quantityInCart}
               </span>
             )}
-          </button>
+          </motion.button>
         </div>
 
         {/* Dish Title */}
@@ -106,7 +124,7 @@ export const MenuItemCard: React.FC<MenuItemCardProps> = ({
           {item.name}
         </h3>
 
-        {/* Subtitle / Description in uppercase/muted font as in Screenshot */}
+        {/* Subtitle / Description */}
         <p className="text-[11px] sm:text-xs text-stone-400 uppercase tracking-tight line-clamp-2 mt-1 min-h-[2rem]">
           {item.description || 'FRESHLY COOKED TO ORDER WITH SPECIAL SPICES'}
         </p>
@@ -150,6 +168,6 @@ export const MenuItemCard: React.FC<MenuItemCardProps> = ({
           </span>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };

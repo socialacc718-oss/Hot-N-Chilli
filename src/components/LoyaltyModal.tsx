@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { LoyaltyAccount, saveLoyaltyAccount, getTier } from '../types/loyalty';
+import { HotNChilliLogo } from './HotNChilliLogo';
 import { 
   X, 
   Award, 
@@ -55,14 +56,12 @@ export const LoyaltyModal: React.FC<LoyaltyModalProps> = ({
         className="relative w-full max-w-lg bg-stone-900 border border-stone-800 rounded-3xl shadow-2xl overflow-hidden my-4"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Modal Header */}
+        {/* Modal Header with Logo */}
         <div className="bg-gradient-to-r from-red-950 via-stone-900 to-amber-950 p-5 border-b border-stone-800 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded-2xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400">
-              <Gift className="w-5 h-5" />
-            </div>
+          <div className="flex items-center gap-3">
+            <HotNChilliLogo size={44} className="shrink-0 drop-shadow-md" />
             <div>
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-2">
                 <h3 className="text-base sm:text-lg font-black text-white">HOT N CHILLI Club</h3>
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-400 text-stone-950">
                   {currentTier}
@@ -73,7 +72,7 @@ export const LoyaltyModal: React.FC<LoyaltyModalProps> = ({
           </div>
           <button
             onClick={onClose}
-            className="p-2 text-stone-400 hover:text-white hover:bg-stone-800 rounded-full transition-colors"
+            className="p-2 text-stone-400 hover:text-white hover:bg-stone-800 rounded-full transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>

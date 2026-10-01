@@ -1,6 +1,7 @@
 import React from 'react';
 import { Flame, Sparkles, Clock, ShieldCheck, Gift } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/menuData';
+import { HotNChilliLogo } from './HotNChilliLogo';
 
 interface HeroBannerProps {
   onExploreMenu: () => void;
@@ -33,26 +34,29 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
               <span className="hidden sm:inline text-amber-300">Min Order Rs. {RESTAURANT_INFO.minimumDeliveryOrder}/-</span>
             </div>
 
-            {/* Main Heading */}
-            <div className="space-y-1">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase font-display leading-tight">
-                HOT N CHILLI <br />
-                <span className="bg-gradient-to-r from-red-500 via-orange-400 to-amber-300 bg-clip-text text-transparent">
-                  RESTAURANT
-                </span>
-              </h1>
-              <p className="text-xl sm:text-2xl text-amber-400 font-bold italic tracking-wide">
-                &ldquo;{RESTAURANT_INFO.tagline}&rdquo;
-              </p>
+            {/* Main Heading with Official Hot N Chilli Logo */}
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-5">
+              <HotNChilliLogo size={82} className="shrink-0 drop-shadow-2xl" />
+              <div className="space-y-1 text-center sm:text-left">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase font-display leading-tight">
+                  HOT N CHILLI <br />
+                  <span className="bg-gradient-to-r from-red-500 via-orange-400 to-amber-300 bg-clip-text text-transparent">
+                    RESTAURANT
+                  </span>
+                </h1>
+                <p className="text-xl sm:text-2xl text-amber-400 font-bold italic tracking-wide">
+                  &ldquo;{RESTAURANT_INFO.tagline}&rdquo;
+                </p>
+              </div>
             </div>
 
-            {/* Description */}
+            {/* Clean Professional Description */}
             <p className="text-sm sm:text-base text-stone-300 max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
               Order your favorite Pakistani Desi Handi, Special Karahi, Charcoal Live BBQ, Karachi Broast, Chinese & Rolls online. 
-              <strong className="text-stone-100 font-semibold"> Order kartay hi instant WhatsApp digital slip generate ho kar kitchen ko send ho jaye gi!</strong>
+              <span className="text-stone-100 font-medium"> Freshly prepared to order with authentic spices, served sizzling hot and delivered straight to your doorstep.</span>
             </p>
 
-            {/* Action Buttons: WhatsApp button removed from here as requested and placed as floating button on bottom-right */}
+            {/* Action Buttons */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
               <button
                 onClick={onExploreMenu}
@@ -73,7 +77,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
               {cartCount > 0 && (
                 <button
                   onClick={onOpenCart}
-                  className="px-4 py-3 rounded-2xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-black text-sm active:scale-95 transition-all flex items-center gap-1.5 shadow-lg"
+                  className="px-4 py-3 rounded-2xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-black text-sm active:scale-95 transition-all flex items-center gap-1.5 shadow-lg cursor-pointer"
                 >
                   <span>Open Cart ({cartCount})</span>
                 </button>
@@ -111,7 +115,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
             <div className="relative rounded-3xl bg-gradient-to-b from-stone-900/90 to-stone-950/90 border border-stone-800 p-5 sm:p-6 shadow-2xl overflow-hidden backdrop-blur-sm">
               <div className="flex items-center justify-between pb-3.5 border-b border-stone-800">
                 <div className="flex items-center gap-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping" />
+                  <HotNChilliLogo size={22} className="shrink-0" />
                   <span className="text-xs font-bold text-red-400 tracking-wider uppercase">
                     Customer Loyalty & Rewards
                   </span>
@@ -125,7 +129,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
                 <div className="p-3 rounded-2xl bg-stone-950 border border-stone-800 flex items-center justify-between">
                   <div className="space-y-0.5">
                     <span className="font-bold text-white block">Earn Points On Every Order</span>
-                    <span className="text-[11px] text-stone-400">Har Rs. 20 ke order par 1 Reward Point milta hai</span>
+                    <span className="text-[11px] text-stone-400">Get 1 Reward Point for every Rs. 20 spent</span>
                   </div>
                   <span className="text-sm font-black text-amber-400 shrink-0">5% Value</span>
                 </div>
@@ -133,7 +137,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
                 <div className="p-3 rounded-2xl bg-stone-950 border border-stone-800 flex items-center justify-between">
                   <div className="space-y-0.5">
                     <span className="font-bold text-white block">Redeem Cash Discounts</span>
-                    <span className="text-[11px] text-stone-400">1 Point = Rs. 1 Instant discount at checkout</span>
+                    <span className="text-[11px] text-stone-400">1 Point = Rs. 1 instant discount at checkout</span>
                   </div>
                   <span className="text-sm font-black text-emerald-400 shrink-0">1 Pt = Rs. 1</span>
                 </div>
@@ -141,7 +145,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
                 <div className="p-3 rounded-2xl bg-gradient-to-r from-red-950/40 to-amber-950/40 border border-amber-600/30 flex items-center justify-between">
                   <div>
                     <span className="font-black text-amber-300 block">Welcome Gift: 150 Points</span>
-                    <span className="text-[11px] text-stone-400">Naye customers ke liye 150 points bilkul muft</span>
+                    <span className="text-[11px] text-stone-400">150 free bonus points for all customers</span>
                   </div>
                   <button
                     onClick={onOpenLoyalty}

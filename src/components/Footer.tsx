@@ -1,6 +1,7 @@
 import React from 'react';
-import { Flame, MapPin, Phone, MessageCircle, Clock, ShieldCheck, Heart } from 'lucide-react';
+import { Flame, MapPin, MessageCircle, Clock } from 'lucide-react';
 import { RESTAURANT_INFO, CATEGORIES } from '../data/menuData';
+import { HotNChilliLogo } from './HotNChilliLogo';
 
 interface FooterProps {
   onSelectCategory: (id: string) => void;
@@ -11,14 +12,10 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory }) => {
     <footer className="bg-stone-950 border-t border-stone-850 text-stone-300 pt-12 pb-24 sm:pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-10 border-b border-stone-850">
-          {/* Brand Info */}
+          {/* Brand Info with Official Logo */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 to-amber-600 p-0.5 shadow-lg">
-                <div className="w-full h-full bg-stone-950 rounded-[10px] flex items-center justify-center">
-                  <Flame className="w-6 h-6 text-red-500 fill-orange-500" />
-                </div>
-              </div>
+              <HotNChilliLogo size={52} className="shrink-0 drop-shadow-lg" />
               <div>
                 <h3 className="text-xl font-black text-white uppercase tracking-wider font-display">
                   HOT N CHILLI
@@ -56,8 +53,9 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory }) => {
 
           {/* Quick Contact & Complains */}
           <div className="lg:col-span-4 space-y-3.5">
-            <h4 className="text-sm font-black text-white uppercase tracking-wider">
-              Contact & Complaints
+            <h4 className="text-sm font-black text-white uppercase tracking-wider flex items-center gap-2">
+              <HotNChilliLogo size={20} className="shrink-0" />
+              <span>Contact & Complaints</span>
             </h4>
 
             <div className="space-y-2 text-xs">
@@ -104,8 +102,9 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory }) => {
 
           {/* Quick Menu Categories */}
           <div className="lg:col-span-3 space-y-3.5">
-            <h4 className="text-sm font-black text-white uppercase tracking-wider">
-              Menu Categories
+            <h4 className="text-sm font-black text-white uppercase tracking-wider flex items-center gap-2">
+              <Flame className="w-4 h-4 text-red-500 fill-orange-500" />
+              <span>Menu Categories</span>
             </h4>
 
             <ul className="grid grid-cols-2 gap-1.5 text-xs text-stone-400">
@@ -132,10 +131,13 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory }) => {
           </div>
         </div>
 
-        {/* Bottom copyright */}
+        {/* Bottom copyright with Logo */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-stone-400">
-          <p>© {new Date().getFullYear()} HOT N CHILLI Restaurant. All rights reserved.</p>
-          <p className="flex items-center gap-1">
+          <div className="flex items-center gap-2">
+            <HotNChilliLogo size={22} className="shrink-0" />
+            <p>© {new Date().getFullYear()} HOT N CHILLI Restaurant. All rights reserved.</p>
+          </div>
+          <p className="flex items-center gap-1.5">
             <span>Prepared fresh with love & spice</span>
             <Flame className="w-3.5 h-3.5 text-red-500 fill-orange-500" />
           </p>
