@@ -10,19 +10,6 @@
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- GitHub Pages Auto-Route to Built Bundle if deployed from repo root -->
-    <script>
-      (function() {
-        if (typeof window !== 'undefined' && location.hostname.endsWith('github.io')) {
-          var p = location.pathname;
-          if (!p.includes('/dist/') && !p.includes('/docs/')) {
-            var target = p.endsWith('/') ? p + 'dist/' : p + '/dist/';
-            location.replace(target + location.search + location.hash);
-          }
-        }
-      })();
-    </script>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
